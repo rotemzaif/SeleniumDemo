@@ -52,6 +52,10 @@ public class BasePage {
     }
 
     // others
+    public boolean isPageDisplayed(WebElement el, String name){
+        return getText(el).equals(name);
+    }
+
     public void sleep(long millis){
         try {
             Thread.sleep(millis);

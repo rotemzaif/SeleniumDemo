@@ -25,18 +25,20 @@ public class CheckBoxesTest extends BaseTest {
     public void tc01_check_home_page_display(){
         WelcomePage wp = new WelcomePage(driver);
         heading = Utils.readProperty("wpTitle");
-        Assert.assertTrue(wp.isPageDisplayed(wp.getPageHeading(),heading),"Welcome page is not loaded");
+        pageName = "Welcome";
+        Assert.assertTrue(wp.isPageDisplayed(wp.getPageHeading(),heading),pageName + " page is not loaded");
     }
 
     @Test(description = "moving to Checkboxes page and verifying that page is displayed", dependsOnMethods = "tc01_check_home_page_display")
     public void tc02_go_to_CheckBoxes_page() throws InterruptedException {
         WelcomePage wp = new WelcomePage(driver);
-        wp.goToPage("Checkboxes");
+        pageName = "Checkboxes";
+        wp.goToPage(pageName);
         Thread.sleep(1000);
         CheckboxesPage cbp = new CheckboxesPage(driver);
         heading = Utils.readProperty("cbpTitle");
         checkboxList = cbp.getCheckboxList();
-        Assert.assertTrue(cbp.isPageDisplayed(cbp.getPageHeading(),heading), "Checkboxes page is not displayed");
+        Assert.assertTrue(cbp.isPageDisplayed(cbp.getPageHeading(),heading), pageName + " page is not displayed");
     }
 
     @Test(dataProvider = "getCheckboxes", description = "toggle checkbox to the opposite state and verify it was toggled", dependsOnMethods = "tc02_go_to_CheckBoxes_page")

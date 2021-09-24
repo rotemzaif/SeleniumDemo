@@ -15,7 +15,12 @@ import java.util.concurrent.TimeUnit;
  *
  * */
 public class BaseTest {
+    // common objects
     WebDriver driver;
+
+    // common variables
+    String heading = "";
+
     @BeforeClass
     public void setup(){
         String driverType = Utils.readProperty("driverType");

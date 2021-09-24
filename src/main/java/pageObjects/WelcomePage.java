@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.Utils;
 
 import java.util.List;
 /**
@@ -13,6 +14,8 @@ public class WelcomePage extends BasePage {
     // page elements
     @FindBy(css = "ul > li > a")
     private List<WebElement> linksList;
+    @FindBy(css = "[class='heading']")
+    private WebElement pageTitle;
 
     public WelcomePage(WebDriver driver) {
         super(driver);
@@ -33,5 +36,10 @@ public class WelcomePage extends BasePage {
                 break;
             }
         }
+    }
+
+    public boolean isPageDisplayed(){
+        String title = Utils.readProperty("wpTitle");
+        return getText(pageTitle).equals(title);
     }
 }

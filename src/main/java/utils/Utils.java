@@ -20,7 +20,7 @@ public class Utils {
     public static String readProperty(String key){
         String value = "";
         try {
-            fis = new FileInputStream("./src/com/stevensmith/data/configuration.properties");
+            fis = new FileInputStream(".\\src\\main\\resources\\data\\configuration.properties");
             Properties prop = new Properties();
             prop.load(fis); // load a properties file
             value = prop.getProperty(key); // get the property value

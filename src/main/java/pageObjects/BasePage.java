@@ -64,4 +64,8 @@ public class BasePage {
             e.printStackTrace();
         }
     }
+
+    public WebElement getPageHeading() {
+        return pageHeading;
+    }
 }

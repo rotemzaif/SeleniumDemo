@@ -6,7 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
-
+/**
+ * CheckboxesPage class derives from BasePage with all its objects, variables and methods.
+ * CheckboxesPage consists of a list of checkboxes elements.
+ * Consists of toggle checkbox method, checkbox state method and checkbox state compare method
+ * */
 public class CheckboxesPage extends BasePage {
     // page elements
     @FindBy(css = "#checkboxes > input")

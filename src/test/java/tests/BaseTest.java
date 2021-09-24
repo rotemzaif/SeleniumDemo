@@ -20,6 +20,7 @@ public class BaseTest {
 
     // common variables
     String heading = "";
+    String pageName = "";
 
     @BeforeClass
     public void setup(){

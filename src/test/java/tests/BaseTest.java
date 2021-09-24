@@ -1,11 +1,13 @@
 package tests;
 
-import io.github.bonigarcia.wdm.ChromeDriverManager;
-import io.github.bonigarcia.wdm.DriverManagerType;
+import io.github.bonigarcia.wdm.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import utils.Utils;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,11 +18,25 @@ public class BaseTest {
     WebDriver driver;
     @BeforeClass
     public void setup(){
-        ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
+        String driverType = Utils.readProperty("driverType");
+        switch (driverType){
+            case "chrome":
+                ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
+                break;
+            case "firefox":
+                FirefoxDriverManager.getInstance(DriverManagerType.FIREFOX);
+                break;
+            case "edge":
+                EdgeDriverManager.getInstance(DriverManagerType.EDGE);
+                break;
+            case "ie":
+                InternetExplorerDriverManager.getInstance(DriverManagerType.IEXPLORER);
+                break;
+        }
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
-        driver.get("https://www.saucedemo.com/");
+        driver.get(Utils.readProperty("url"));
     }
 
     @AfterClass

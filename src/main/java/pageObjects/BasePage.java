@@ -13,6 +13,7 @@ public class BasePage {
     // objects
     WebDriver driver;
     JavascriptExecutor js;
+    WebElement pageHeading;
 
     // constructor
     public BasePage(WebDriver driver) {

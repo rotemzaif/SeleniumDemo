@@ -7,7 +7,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 /**
- *
+ * FramesPage class derives from BasePage class and consists of a list of link elements.
+ * The class also consists of a 'go to page' method which clicks on a given link from the page
  * */
 public class FramesPage extends BasePage {
     // page elements

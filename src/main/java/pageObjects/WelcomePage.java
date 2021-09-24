@@ -37,9 +37,4 @@ public class WelcomePage extends BasePage {
             }
         }
     }
-
-    public boolean isPageDisplayed(){
-        String title = Utils.readProperty("wpTitle");
-        return getText(pageTitle).equals(title);
-    }
 }

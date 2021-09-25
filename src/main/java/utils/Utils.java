@@ -1,5 +1,10 @@
 package utils;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.CellType;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,8 +17,12 @@ import java.util.Properties;
 public class Utils {
 
     private static FileInputStream fis;
-
+    private static HSSFSheet ExcelWSheet;
+    private static HSSFWorkbook ExcelWBook;
+    private static HSSFCell Cell;
+    private static HSSFRow Row;
     /**
+     *
      * this method reads a property from a config.properties file and return its value
      * @param - a String key property name
      * @return - property value
@@ -49,5 +58,46 @@ public class Utils {
         String filePath =  getDownLoadDir() + "\\" + fileName;
         File file = new File(filePath);
         return file.delete();
+    }
+
+    public static String getFieldValue(String filePath, String sheetName, String fieldName){
+        String cellValue = "";
+        try {
+            int fieldIndex = 0;
+            fis = new FileInputStream(filePath);
+            // Access the excel file sheet
+            ExcelWBook = new HSSFWorkbook(fis);
+            ExcelWSheet = ExcelWBook.getSheet(sheetName);
+            int startRow = 0;
+            int startCol = 0;
+            int totRows = ExcelWSheet.getLastRowNum();
+            Row = ExcelWSheet.getRow(0);
+            int totCols = Row.getLastCellNum();
+            for (int i = startRow; i < 1; i++) {
+                for (int j = startCol; j < totCols; j++) {
+                    if(getCellValue(i,j).equals(fieldName)){
+                        fieldIndex = j;
+                        break;
+                    }
+                }
+            }
+            cellValue = getCellValue(startRow+1,fieldIndex);
+        } catch (FileNotFoundException e) {
+            System.out.println("Could not read the Excel sheet");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Could not read the Excel sheet");
+            e.printStackTrace();
+        }
+        return cellValue;
+    }
+
+    public static String getCellValue(int rowNum, int colNUm){
+        Cell = ExcelWSheet.getRow(rowNum).getCell(colNUm);
+        Cell.setCellType(CellType.STRING);
+        CellType cellType = Cell.getCellType();
+        if(cellType == CellType.BLANK)
+            return "";
+        else return Cell.getStringCellValue();
     }
 }

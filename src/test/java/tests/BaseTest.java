@@ -80,11 +80,9 @@ public class BaseTest {
                 InternetExplorerDriverManager.getInstance(DriverManagerType.IEXPLORER);
                 break;
         }
-        String projPath = System.getProperty("user.dir");
-        String downloadPath = projPath + "\\src\\main\\resources\\data";
         HashMap<String, Object> chromePrefs = new HashMap<>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
-        chromePrefs.put("download.default_directory", downloadPath);
+        chromePrefs.put("download.default_directory", Utils.getDownLoadDir());
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", chromePrefs);
         options.addArguments("--disable-notifications");
@@ -92,7 +90,6 @@ public class BaseTest {
         cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         cap.setCapability(ChromeOptions.CAPABILITY, options);
         driver = new ChromeDriver(options);
-
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
         driver.get(Utils.readProperty("url"));

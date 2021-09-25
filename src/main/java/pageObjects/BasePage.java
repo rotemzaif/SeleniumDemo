@@ -4,6 +4,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 /**
  * The BasePage class consists of objects and methods that are common in the rest of the page objects.
  * Other page objects classes will inherit from this class and use its objects and methods.
@@ -14,12 +16,14 @@ public class BasePage {
     WebDriver driver;
     JavascriptExecutor js;
     WebElement pageHeading;
+    WebDriverWait wait;
 
     // constructor
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
         js = (JavascriptExecutor) driver;
+        wait = new WebDriverWait(driver, 15);
     }
 
     // elements actions

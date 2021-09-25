@@ -55,7 +55,7 @@ public class CheckBoxesTest extends BaseTest {
         }
         // getting checkbox state after toggle
         actualState = cbp.isCheckBoxSelected(checkbox);
-        Assert.assertNotEquals(cbp.compareCheckboxState(actualState, expectedState), "checkbox #" + counter + " was not toggled");
+        Assert.assertEquals(actualState, expectedState, "checkbox #" + counter + " was not toggled");
     }
 
     @DataProvider

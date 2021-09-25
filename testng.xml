@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Rotem/git_repo/capitolisHomeAssignment">
+        <classes>
+            <class name="tests.CheckBoxesTest">
+                <methods>
+                    <include name="tc01_check_home_page_display"/>
+                    <include name="tc02_go_to_CheckBoxes_page"/>
+                    <include name="tc03_toggle_Checkbox1"/>
+                </methods>
+            </class>
+            <class name="tests.DynamicLoadingTest">
+                <methods>
+                    <include name="tc01_check_home_page_display"/>
+                    <include name="tc02_go_to_DynamicLoading_Main_page"/>
+                    <include name="tc03_go_to_DynamicLoading_Ex2_page"/>
+                    <include name="tc04_verify_finish_text"/>
+                </methods>
+            </class>
+            <class name="tests.FramesTest">
+                <methods>
+                    <include name="tc01_check_home_page_display"/>
+                    <include name="tc02_go_to_Frames_page"/>
+                    <include name="tc03_go_to_iFrames_page"/>
+                    <include name="tc04_enter_text_to_editor"/>
+                </methods>
+            </class>
+            <class name="tests.JQueryMenuTest">
+                <methods>
+                    <include name="tc01_check_home_page_display"/>
+                    <include name="tc02_go_to_JQueryUIMenu_page"/>
+                    <include name="tc03_check_if_file_exist"/>
+                    <include name="tc04_download_excel_file"/>
+                    <include name="tc05_check_Tax_field_value"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

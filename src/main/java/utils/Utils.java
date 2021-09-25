@@ -1,5 +1,6 @@
 package utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,5 +31,23 @@ public class Utils {
             e.printStackTrace();
         }
         return value;
+    }
+
+    public static String getDownLoadDir(){
+        String userHomePath = System.getProperty("user.home");
+        String downloadPath = userHomePath + "\\Downloads";
+        return downloadPath;
+    }
+
+    public static boolean isFileExist(String fileName){
+        String filePath =  getDownLoadDir() + "\\" + fileName;
+        File file = new File(filePath);
+        return file.exists();
+    }
+
+    public static boolean deleteFile(String fileName){
+        String filePath =  getDownLoadDir() + "\\" + fileName;
+        File file = new File(filePath);
+        return file.delete();
     }
 }

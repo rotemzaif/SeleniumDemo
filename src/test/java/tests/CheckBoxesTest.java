@@ -24,7 +24,7 @@ public class CheckBoxesTest extends BaseTest {
     @Test
     public void tc01_check_home_page_display(){
         WelcomePage wp = new WelcomePage(driver);
-        heading = Utils.readProperty("wpTitle");
+        expectedHeading = Utils.readProperty("wpTitle");
         pageName = "Welcome";
         Assert.assertTrue(wp.isPageDisplayed(wp.getPageHeading(),heading),pageName + " page is not loaded");
     }
@@ -36,7 +36,7 @@ public class CheckBoxesTest extends BaseTest {
         wp.goToPage(pageName);
         Thread.sleep(1000);
         CheckboxesPage cbp = new CheckboxesPage(driver);
-        heading = Utils.readProperty("cbpTitle");
+        expectedHeading = Utils.readProperty("cbpTitle");
         checkboxList = cbp.getCheckboxList();
         Assert.assertTrue(cbp.isPageDisplayed(cbp.getPageHeading(),heading), pageName + " page is not displayed");
     }

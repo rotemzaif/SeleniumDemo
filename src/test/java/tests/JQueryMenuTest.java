@@ -16,19 +16,19 @@ public class JQueryMenuTest extends BaseTest {
     @Test
     public void tc01_check_home_page_display(){
         WelcomePage wp = new WelcomePage(driver);
-        heading = Utils.readProperty("wpTitle");
+        expectedHeading = Utils.readProperty("wpTitle");
         pageName = "Welcome";
-        Assert.assertTrue(wp.isPageDisplayed(wp.getPageHeading(),heading),pageName + " page is not loaded");
+        Assert.assertTrue(wp.isPageDisplayed(wp.getPageHeading(),expectedHeading),pageName + " page is not loaded");
     }
 
     @Test(dependsOnMethods = "tc01_check_home_page_display")
     public void tc02_go_to_JQueryUIMenu_page(){
         WelcomePage wp = new WelcomePage(driver);
         pageName = Utils.readProperty("jqmpName");
-        heading = Utils.readProperty("jqmpHeading");
+        expectedHeading = Utils.readProperty("jqmpHeading");
         wp.goToPage(pageName);
         jqmp = new JQueryUiMenuPage(driver);
-        Assert.assertTrue(jqmp.isPageDisplayed(jqmp.getPageHeading(),heading),pageName + " page is not loaded");
+        Assert.assertTrue(jqmp.isPageDisplayed(jqmp.getPageHeading(),expectedHeading),pageName + " page is not loaded");
     }
 
     @Test(description = "deleting menu.xls file if it exist in the download directory", dependsOnMethods = "tc02_go_to_JQueryUIMenu_page")

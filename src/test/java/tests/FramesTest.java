@@ -17,8 +17,8 @@ public class FramesTest extends BaseTest {
     public void tc01_check_home_page_display(){
         WelcomePage wp = new WelcomePage(driver);
         pageName = "Welcome";
-        heading = Utils.readProperty("wpTitle");
-        Assert.assertTrue(wp.isPageDisplayed(wp.getPageHeading(),heading),pageName + " page is not loaded");
+        expectedHeading = Utils.readProperty("wpTitle");
+        Assert.assertTrue(wp.isPageDisplayed(wp.getPageHeading(),expectedHeading),pageName + " page is not loaded");
     }
 
     @Test(dependsOnMethods = "tc01_check_home_page_display")
@@ -28,8 +28,8 @@ public class FramesTest extends BaseTest {
         wp.goToPage(pageName);
         Thread.sleep(1000);
         fp = new FramesPage(driver);
-        heading = Utils.readProperty("fpTitle");
-        Assert.assertTrue(fp.isPageDisplayed(fp.getPageHeading(),heading), pageName + " page is not loaded");
+        expectedHeading = Utils.readProperty("fpTitle");
+        Assert.assertTrue(fp.isPageDisplayed(fp.getPageHeading(),expectedHeading), pageName + " page is not loaded");
     }
 
     @Test(dependsOnMethods = "tc02_go_to_Frames_page")
@@ -38,8 +38,8 @@ public class FramesTest extends BaseTest {
         pageName = "iFrame";
         fp.goToPage(pageName);
         ifp = new IFramePage(driver);
-        heading = Utils.readProperty("ifpTitle");
-        Assert.assertTrue(ifp.isPageDisplayed(ifp.getPageHeading(),heading), pageName + " page is not loaded");
+        expectedHeading = Utils.readProperty("ifpTitle");
+        Assert.assertTrue(ifp.isPageDisplayed(ifp.getPageHeading(),expectedHeading), pageName + " page is not loaded");
     }
 
     @Test(description = "enter text in the editor and verify that was indeed written", dependsOnMethods = "tc03_go_to_iFrames_page")

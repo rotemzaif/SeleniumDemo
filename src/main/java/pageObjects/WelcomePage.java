@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Utils;
 
+import java.io.IOException;
 import java.util.List;
 /**
  * WelcomePage class is the home page which consists of links to other pages.
@@ -36,5 +37,21 @@ public class WelcomePage extends BasePage {
                 break;
             }
         }
+    }
+
+    public void login(String result) throws IOException {
+        String exeFilePath = "";
+        switch (result){
+            case "success":
+                exeFilePath = Utils.readProperty("successFilePath");
+                break;
+            case "invalidCredentials":
+                exeFilePath = Utils.readProperty("invalidCredentialsFilePath");
+                break;
+            case "cancel":
+                exeFilePath = Utils.readProperty("cancelFilePath");
+                break;
+        }
+        Runtime.getRuntime().exec(exeFilePath);
     }
 }

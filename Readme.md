@@ -60,6 +60,11 @@ Issues Experienced
     * there was an issue in which entering admin/admin and from this point on the popup/alert was not displayed and always showed the Basic Auth page.
       Solved by clearing browser cash.
     * this test is not included in the test suite since I was unable to access the alert and enter credential
+    * I managed to solve this issue and added the test:
+      I used the following source to add authentication support:
+      https://www.lambdatest.com/blog/handling-login-popup-in-selenium-webdriver-using-java/
+      I also created a 'clear cache' method which accessed the chrome settings and clears the passwords cache in the last hour.  
+      For this purpose I added o.github.sukgu dependency in the pom file.
     
 3.  Application Error
     * the application crashed and was down for a while which created a small delay

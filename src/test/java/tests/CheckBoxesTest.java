@@ -26,7 +26,7 @@ public class CheckBoxesTest extends BaseTest {
         WelcomePage wp = new WelcomePage(driver);
         expectedHeading = Utils.readProperty("wpTitle");
         pageName = "Welcome";
-        Assert.assertTrue(wp.isPageDisplayed(wp.getPageHeading(),heading),pageName + " page is not loaded");
+        Assert.assertTrue(wp.isPageDisplayed(wp.getPageHeading(),expectedHeading),pageName + " page is not loaded");
     }
 
     @Test(description = "moving to Checkboxes page and verifying that page is displayed", dependsOnMethods = "tc01_check_home_page_display")
@@ -38,7 +38,7 @@ public class CheckBoxesTest extends BaseTest {
         CheckboxesPage cbp = new CheckboxesPage(driver);
         expectedHeading = Utils.readProperty("cbpTitle");
         checkboxList = cbp.getCheckboxList();
-        Assert.assertTrue(cbp.isPageDisplayed(cbp.getPageHeading(),heading), pageName + " page is not displayed");
+        Assert.assertTrue(cbp.isPageDisplayed(cbp.getPageHeading(),expectedHeading), pageName + " page is not displayed");
     }
 
     @Test(dataProvider = "getCheckboxes", description = "toggle checkbox to the opposite state and verify it was toggled", dependsOnMethods = "tc02_go_to_CheckBoxes_page")

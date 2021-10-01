@@ -10,6 +10,16 @@
                     <include name="tc03_toggle_Checkbox1"/>
                 </methods>
             </class>
+            <class name="tests.BasicAuthTest">
+                <methods>
+                    <include name="tc01_check_home_page_display"/>
+                    <include name="tc02_go_to_Basic_Auth_page_with_valid_credentials"/>
+                    <include name="tc03_Basic_Auth_Page_check_success_statement"/>
+                    <include name="tc04_clear_broswer_cache_after_successful_login"/>
+                    <include name="tc05_Basic_Auth_Page_login_with_invalid_credentials"/>
+                    <include name="tc06_Basic_Auth_Page_login_cancel"/>
+                </methods>
+            </class>
             <class name="tests.DynamicLoadingTest">
                 <methods>
                     <include name="tc01_check_home_page_display"/>

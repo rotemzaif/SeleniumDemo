@@ -45,7 +45,7 @@ public class BasicAuthTest extends BaseTest {
         bap.goToWelcomePage();
         Thread.sleep(1000);
         wp = new WelcomePage(driver);
-        wp.clearCash(driver,Utils.readProperty("homePageURL"));
+        wp.clearCache(driver,Utils.readProperty("homePageURL"));
         wp = new WelcomePage(driver);
         Thread.sleep(2000);
         expectedHeading = Utils.readProperty("wpTitle");

@@ -1,10 +1,14 @@
 package pageObjects;
 
+import io.github.sukgu.Shadow;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 /**
  * The BasePage class consists of objects and methods that are common in the rest of the page objects.
@@ -71,5 +75,25 @@ public class BasePage {
 
     public WebElement getPageHeading() {
         return pageHeading;
+    }
+
+    public  void clearCache(WebDriver driver, String url)throws InterruptedException{
+        driver.get("chrome://settings/clearBrowserData");
+        Shadow shadow = new Shadow(driver);
+        List<WebElement> list = shadow.findElements("#clearBrowsingDataDialog > div:nth-child(2) > cr-tabs > div .tab");
+        if(list.get(1).getAttribute("aria-selected").equals("false"))
+            list.get(1).click();
+        Thread.sleep(2000);
+        WebElement timeRangeEl = shadow.findElement(".md-select");
+        Select timeRangeSel = new Select(timeRangeEl);
+        String currentTimeRange = timeRangeSel.getFirstSelectedOption().getText();
+        if(!currentTimeRange.equals("Last hour"))
+            timeRangeSel.selectByVisibleText("Last hour");
+        WebElement pswdck = shadow.findElement("[aria-label='Passwords and other sign-in data'] > #checkbox");
+        if(!pswdck.isSelected())
+            pswdck.click();
+        shadow.findElement("#clearBrowsingDataConfirm").click();
+        Thread.sleep(2000);
+        driver.get(url);
     }
 }

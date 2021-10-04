@@ -66,7 +66,4 @@ Issues Experienced
       I also created a 'clear cache' method which accessed the chrome settings and clears the passwords cache in the last hour.  
       For this purpose I added o.github.sukgu dependency in the pom file.
     
-3.  Application Error
-    * the application crashed and was down for a while which created a small delay
-
  

@@ -26,7 +26,7 @@ public class BasicAuthTest extends BaseTest {
         wp.goToPage(pageName);
         // enter valid credentials (admin/admin)
         wp.login("success");
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         bap = new BasicAuthPage(driver, "success");
         expectedHeading = Utils.readProperty("bapHeading");
         Assert.assertTrue(bap.isPageDisplayed(bap.getPageHeading(),expectedHeading), pageName + " page is not loaded");

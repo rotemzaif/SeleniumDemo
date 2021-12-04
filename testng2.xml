@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="SeleniumDemo">
+        <classes>
+            <class name="tests.BasicAuthTest">
+                <methods>
+                    <include name="tc01_check_home_page_display"/>
+                    <include name="tc02_go_to_Basic_Auth_page_with_valid_credentials"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
